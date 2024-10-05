@@ -1,0 +1,134 @@
+/* Global Styles */
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-image: url(img/website-background.png);
+    overflow-x: hidden;
+}
+
+/* Full-Width Scrollable Section */
+.AllSurvivors {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%; /* Adjust as needed */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-evenly; /* Distribuye el espacio uniformemente */
+    margin-bottom: 15px; /* Ajusta según sea necesario */
+}
+
+/* Portrait Wrapper and Elements */
+.charPortraitWrapper {
+    position: relative;
+    width: calc(9.09% - 10px); /* 100% / 11 elementos, con un pequeño margen */
+    padding-bottom: calc(9.09% - 10px);
+    background-color: transparent;
+    overflow: hidden;
+}
+
+.charPortraitShadowBG,
+.charPortraitBg,
+.charPortraitRoleBg,
+.charPortraitImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+}
+
+.charPortraitImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: auto;
+}
+
+/* Role Background */
+.charPortraitRoleBg.survivor {
+    filter: sepia(1) saturate(30) hue-rotate(177.3deg) saturate(3.1) brightness(0.40);
+}
+
+.charPortraitRoleBg {
+    background-image: url(https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/1/18/CharPortrait_roleBG.webp);
+}
+
+.charPortraitBg {
+    background-image: url(https://static.wikia.nocookie.net/deadbydaylight_gamepedia_en/images/4/42/CharPortrait_bg.webp);
+}
+
+/* Anchor Tag Styles */
+a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* Red Overlay */
+.red-overlay {
+    position: absolute;
+    top: 50%;          /* Position the top edge in the middle */
+    left: 50%;         /* Position the left edge in the middle */
+    transform: translate(-50%, -50%); /* Adjust position to center */
+    width: 80%;       /* Full width */
+    height: 100%;      /* Full height */
+    background-color: rgba(255, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+    border-radius: 15px; /* Adjust this value for more or less rounding */
+}
+
+.red-overlay.active {
+    opacity: 1;
+    pointer-events: auto; /* Enable interactions when active */
+    background-image: url('img/skull.png'); /* Background image only when active */
+    background-size: 50%; /* Adjust to contain or cover as needed */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    pointer-events: auto; /* Enable pointer events when active */
+    background-position: center; /* Center the image */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+    .charPortraitWrapper {
+        width: calc(12.5% - 10px); /* 8 por fila */
+        padding-bottom: calc(12.5% - 10px);
+    }
+}
+
+@media (max-width: 768px) {
+    .charPortraitWrapper {
+        width: calc(20% - 10px); /* 5 por fila */
+        padding-bottom: calc(20% - 10px);
+    }
+}
+
+@media (max-width: 480px) {
+    .charPortraitWrapper {
+        width: calc(25% - 10px); /* 4 por fila */
+        padding-bottom: calc(25% - 10px);
+    }
+}
